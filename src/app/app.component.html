@@ -1,0 +1,79 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<h5>My Custom Table</h5>
+
+  <Main>  
+    <div class="page-loader" [hidden]="dataLoaded">
+  <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+  </div>
+</div><section>
+<div class="col-md-12 align-self-center" style="padding-right: 150px;padding-left: 150px; ">
+
+
+    <div style=" background-color: white;padding-left: 25px; padding-right: 25px; ">
+  
+
+        <br>
+        <div>
+          <h5>DropDown</h5>
+          <select  (change)="selectionChanged($event)">
+        <option *ngFor="let item of dataItems" [value]="item.codeValue">
+          {{item.englishName}}
+        </option>
+        </select>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+
+                <thead class="">
+                  <tr class="header">
+                    <th style="width:60%;">Name</th>
+                    <th style="width:40%;">Phone</th>
+                    <th style="width:40%;">countryCode</th>
+                    <th style="width:40%;">countryName</th>
+                    <th style="width:40%;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                  <tr *ngFor="let data of dataSource | paginate: { id: 'listing_pagination',
+                  itemsPerPage: 5,
+                  currentPage: page,
+                  totalItems: dataLength }">
+          
+
+                    <td>{{data.name}}</td>
+                    <td>{{data.phone}}</td>
+                    <td>{{data.countryCode}}</td>
+                    <td>{{data.countryName}}</td>
+                    <td>{{data.status}}</td>
+                  </tr>
+                  <!-- <br>
+                  <tr></tr>
+                  <tr>Total Items:{{dataLength }}</tr> -->
+                </tbody>
+            </table>
+            <div id="block_container">
+            <div>
+              <pagination-controls id="listing_pagination"  maxSize="5" directionLinks="true" (pageChange)="page =  $event">
+              </pagination-controls>
+            </div>
+            <div>Total Items:{{dataLength }}</div>
+            </div>
+            <!-- <div class="py-4 text-center" *ngIf="dataSource && dataSource.length == 0">
+                No data available
+            </div>
+
+
+
+            <mat-paginator #paginator [length]="dataLength" [pageSize]="pageLength" (page)="updatePage($event)">
+            </mat-paginator>-->
+        </div> 
+    </div>
+
+
+
+
+</div>
+</section>
+</Main>

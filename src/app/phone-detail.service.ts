@@ -11,11 +11,11 @@ export class PhoneDetailService {
   constructor(private http:HttpClient) { }
 
   public getPhoneDetail(filterDataRequestBody:FilterDataRequestBody){
-    return this.http.post('http://localhost:9090/Customer/all',filterDataRequestBody);
+    return this.http.post('http://localhost:9091/Customer/all',filterDataRequestBody);
 
   }
   public getAllAvailableItems(){
-    return this.http.get('http://localhost:9090/Customer/GetAllItems')
+    return this.http.get('http://localhost:9091/Customer/GetAllItems')
   }
  
 }
